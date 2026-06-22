@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main container that holds all content -->
+    <div class="container">
+        
+        <!-- HEADER SECTION - Shows title and current score -->
+        <div class="header">
+            <h1>🎓 Quiz App</h1>
+            <!-- This div will display the current score (e.g., "Score: 0/5") -->
+            <div class="score-display" id="scoreDisplay">Score: 0/0</div>
+        </div>
+
+        <!-- START SCREEN - Shows when user first opens the app -->
+        <div class="start-screen" id="startScreen">
+            <h2>Welcome to the Quiz!</h2>
+            <p>Test your knowledge with our online trivia quiz</p>
+            
+            <!-- Shows quiz information -->
+            <div class="quiz-info">
+                <p>📝 <strong>5 Random Questions</strong></p>
+                <p>⏱️ <strong>Multiple Choice</strong></p>
+                <p>✅ <strong>Instant Feedback</strong></p>
+                <p>🌐 <strong>Questions from Internet</strong></p>
+            </div>
+
+            <!-- Difficulty Level Selection -->
+            <div class="selection-group">
+                <label for="difficulty">Difficulty Level:</label>
+                <select id="difficulty" class="select-input">
+                    <option value="">Any</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <!-- Category Selection -->
+            <div class="selection-group">
+                <label for="category">Category:</label>
+                <select id="category" class="select-input">
+                    <option value="">Random</option>
+                    <option value="9">General Knowledge</option>
+                    <option value="21">Sports</option>
+                    <option value="22">Geography</option>
+                    <option value="23">History</option>
+                    <option value="27">Animals</option>
+                    <option value="28">Vehicles</option>
+                </select>
+            </div>
+            
+            <!-- Button to start the quiz - calls startQuiz() function from JavaScript -->
+            <button class="btn-primary" onclick="startQuiz()" id="startBtn">Start Quiz</button>
+        </div>
+
+        <!-- LOADING SCREEN - Shows while fetching questions from internet -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="spinner"></div>
+            <h2>Fetching Questions...</h2>
+            <p>Getting fresh questions from the internet</p>
+        </div>
+
+        <!-- ERROR SCREEN - Shows if API call fails -->
+        <div class="error-screen" id="errorScreen">
+            <h2>Oops! Something went wrong 😞</h2>
+            <p id="errorMessage">Unable to fetch questions. Please try again.</p>
+            <button class="btn-primary" onclick="goBackToStart()">Back to Start</button>
+        </div>
+
+        <!-- QUIZ SCREEN - Shows during the quiz (questions and options) -->
+        <div id="quizScreen" class="hidden">
+            
+            <!-- Progress bar showing how many questions completed -->
+            <div class="progress-bar">
+                <!-- This div fills up as user progresses through the quiz -->
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- Section containing the question and answer options -->
+            <div class="question-section">
+                <!-- Shows which question number we're on (e.g., "Question 1 of 5") -->
+                <div class="question-number" id="questionNumber"></div>
+                
+                <!-- The actual question text -->
+                <div class="question-text" id="questionText"></div>
+                
+                <!-- Container for answer buttons - gets filled dynamically -->
+                <div class="options" id="optionsContainer"></div>
+            </div>
+
+            <!-- Navigation buttons to move between questions -->
+            <div class="button-group">
+                <!-- Previous button to go back -->
+                <button class="btn-secondary" onclick="previousQuestion()" id="prevBtn">← Previous</button>
+                
+                <!-- Next button to go forward or finish quiz -->
+                <button class="btn-primary" onclick="nextQuestion()" id="nextBtn">Next →</button>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN - Shows final score and performance after quiz ends -->
+        <div class="results-section" id="resultsScreen">
+            <h2>Quiz Completed! 🎉</h2>
+            
+            <!-- Large circle displaying the final score -->
+            <div class="score-circle" id="finalScore">0/5</div>
+            
+            <!-- Shows percentage and summary -->
+            <div class="score-text" id="scoreText"></div>
+            
+            <!-- Performance message with color-coded feedback -->
+            <div class="performance" id="performanceText"></div>
+            
+            <!-- Button to take the quiz again -->
+            <div class="button-group" style="margin-top: 40px;">
+                <button class="btn-primary" onclick="restartQuiz()">Retake Quiz</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="scripts.js"></script>
+</body>
+</html>
