@@ -10,27 +10,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Main container that holds all content -->
-    <div class="container">
+    <!-- Mobile frame to mimic phone UI -->
+    <div class="mobile-frame">
+        <div class="container">
         
         <!-- HEADER SECTION - Shows title and current score -->
         <div class="header">
-            <h1>🎓 Quiz App</h1>
+            <h1 class="app-title">Quizard</h1>
             <!-- This div will display the current score (e.g., "Score: 0/5") -->
             <div class="score-display" id="scoreDisplay">Score: 0/0</div>
         </div>
 
         <!-- START SCREEN - Shows when user first opens the app -->
         <div class="start-screen" id="startScreen">
-            <h2>Welcome to the Quiz!</h2>
-            <p>Test your knowledge with our online trivia quiz</p>
-            
+            <div class="hero">
+                <div class="hero-title">Quizard</div>
+                <p class="hero-sub">1,000+ quizzes to challenge you and your friends</p>
+                <div class="hero-art" aria-hidden="true"></div>
+            </div>
+
             <!-- Shows quiz information -->
             <div class="quiz-info">
                 <p>📝 <strong>5 Random Questions</strong></p>
                 <p>⏱️ <strong>Multiple Choice</strong></p>
                 <p>✅ <strong>Instant Feedback</strong></p>
-                <p>🌐 <strong>Questions from Internet</strong></p>
             </div>
 
             <!-- Difficulty Level Selection -->
@@ -57,9 +60,9 @@
                     <option value="28">Vehicles</option>
                 </select>
             </div>
-            
+
             <!-- Button to start the quiz - calls startQuiz() function from JavaScript -->
-            <button class="btn-primary" onclick="startQuiz()" id="startBtn">Start Quiz</button>
+            <button class="btn-cta" onclick="startQuiz()" id="startBtn">Start playing</button>
         </div>
 
         <!-- LOADING SCREEN - Shows while fetching questions from internet -->
@@ -125,6 +128,8 @@
                 <button class="btn-primary" onclick="restartQuiz()">Retake Quiz</button>
             </div>
         </div>
+
+    </div>
 
     </div>
 

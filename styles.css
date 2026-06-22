@@ -26,17 +26,47 @@ body {
    ============================================ */
 
 /* Center container with white background and shadow */
-.container {
-    background: white;
-    border-radius: 15px;
-    /* Shadow creates depth effect */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
+.mobile-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    padding: 40px;
-    /* Smooth entrance animation */
-    animation: slideIn 0.4s ease-out;
 }
+
+.container {
+    background: linear-gradient(180deg, #1c1440 0%, #24184a 100%);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(4,6,23,0.6);
+    width: 360px;
+    max-width: 100%;
+    padding: 28px 18px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -60px;
+    top: -60px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.04), transparent 40%);
+    border-radius: 50%;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: -120px;
+    bottom: -120px;
+    background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.03), transparent 40%);
+    border-radius: 50%;
+}
+
 
 /* Animation: slides content in from top with fade effect */
 @keyframes slideIn {
@@ -321,6 +351,30 @@ button {
 .hidden {
     display: none;
 }
+
+/* HERO on start screen */
+.hero { text-align:center; margin-bottom:18px }
+.hero-title { font-size:44px; font-weight:800; color:#ffffff; letter-spacing:1px }
+.hero-sub { color: rgba(255,255,255,0.85); margin-top:8px; font-size:14px }
+.hero-art { width:160px; height:120px; margin:18px auto 0; border-radius:16px; background: linear-gradient(180deg,#4c2fb3,#6c4bd6); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+
+/* CTA button style for start */
+.btn-cta { width: 80%; margin: 20px auto 0; display:block; padding:14px 20px; border-radius:24px; background: linear-gradient(90deg,#00e5ff,#6ce0ff); color:#081228; font-weight:700; border:none; box-shadow:0 8px 30px rgba(0,140,255,0.18); }
+.btn-cta:hover { transform: translateY(-3px); }
+
+/* Quiz screen: make question area dark and options white pills */
+#quizScreen { color: #fff; }
+#quizScreen .question-section { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:18px; border-radius:16px }
+#quizScreen .question-text { color: #fff; font-size:20px }
+#quizScreen .options { margin-top:16px }
+#quizScreen .option { background: #ffffff; color:#1b1b2f; border:none; border-radius:12px; padding:14px 16px; font-weight:700; box-shadow: 0 8px 18px rgba(6,8,30,0.3); font-size:16px }
+#quizScreen .option:hover { transform: translateY(-3px); }
+#quizScreen .option.selected { background:#dfe8ff; }
+
+/* Make header title larger */
+.header .app-title { font-size:32px; font-weight:800; color:#fff }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px }
+.score-display { color: rgba(255,255,255,0.8); font-weight:600 }
 
 /* ============================================
    START SCREEN
